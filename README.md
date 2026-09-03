@@ -9,7 +9,7 @@
 * Rodas Juan Martin (46363476)
 * Cabrera Luz (44976967)
 * Nicolas Javier Mancedo (46715563)
-* Torres, Enzo Sebastián (45.097.401)
+* Torres, Enzo Sebastián (45097401)
 ---
 
 ## 📝 Propuesta
