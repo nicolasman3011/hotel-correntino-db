@@ -1,8 +1,8 @@
-# 🏨 Proyecto Base de Datos: Hotel Correntino
+# 🏨 Proyecto Base de Datos I: Hotel Correntino
 
 **Universidad Nacional del Nordeste (UNNE)**  
 **Facultad de Ciencias Exactas y Naturales y Agrimensura (FaCENA)**  
-**Cátedra:** Base de datos  
+**Cátedra:** Bases de Datos I  
 
 ## 👥 Equipo de Trabajo
 * Valentín Nicolas Luque (45845740)
@@ -10,9 +10,10 @@
 * Cabrera Luz (44976967)
 * Nicolas Javier Mancedo (46715563)
 * Torres, Enzo Sebastián (45097401)
+
 ---
 
-## 📝 Propuesta
+## 📝 Descripción del Caso (Dominio del Problema)
 Decidimos trabajar con un hotel de la ciudad de Corrientes que necesita actualizar y mejorar su sistema actual de gestión de reservas. El hotel busca contar con un sistema que permita registrar huéspedes, habitaciones y reservas, facilitando la organización de la información y evitando problemas al momento de gestionar las reservas y la disponibilidad de las habitaciones.
 
 ## 🎯 Requerimientos del Sistema
@@ -58,9 +59,39 @@ Decidimos trabajar con un hotel de la ciudad de Corrientes que necesita actualiz
 
 ---
 
-## 🚀 Hoja de Ruta (Roadmap)
-- [x] Definición del proyecto y reglas de negocio.
-- [ ] Diseño del Diagrama Entidad-Relación (DER).
-- [ ] Creación de scripts DDL (Tablas y restricciones).
-- [ ] Creación de scripts DML (Datos de prueba).
-- [ ] Consultas SQL y Vistas.
+## 📅 Cronograma y Entregables
+
+| Etapa | Descripción | Estado | Fecha de Entrega |
+| :--- | :--- | :---: | :--- |
+| **I. Requerimientos** | Dominio del negocio y Reglas de negocio | 🟢 Completo | Viernes 04/09 |
+| **II. Modelado** | DER (P. Chen), Modelo Relacional y Normalización 3FN | ⚪ Pendiente | Viernes 11/09 |
+| **III. Implementación** | Scripts DDL (Tablas) y DML (Poblado inicial) | ⚪ Pendiente | Miércoles 30/09 |
+| **IV. Consultas** | SQL, Casos de uso, Reportes y Facturación | ⚪ Pendiente | A definir |
+| **V. Temas Técnicos** | Procedimientos, Triggers, Índices y Seguridad | ⚪ Pendiente | A definir |
+
+---
+
+## 📂 Estructura del Repositorio
+
+El proyecto sigue la estructura de directorios exigida por la cátedra:
+
+```text
+proyecto-bd1-equipo/
+│
+├── docs/
+│   ├── etapa-01/
+│   ├── etapa-02/
+│   ├── etapa-03/
+│   ├── etapa-04/
+│   └── etapa-05/
+│
+├── sql/
+│   ├── ddl/
+│   ├── dml/
+│   ├── consultas/
+│   └── tecnico/
+│
+├── modelos/
+│   └── der/
+│
+└── README.md
