@@ -5,11 +5,11 @@
 **Cátedra:** Base de datos  
 
 ## 👥 Equipo de Trabajo
-* Valentín Luque (45845740)
+* Valentín Nicolas Luque (45845740)
 * Rodas Juan Martin (46363476)
 * Cabrera Luz (44976967)
-* Nicolas Mancedo (46715563)
-* Torres, Enzo Sebastián - 45.097.401
+* Nicolas Javier Mancedo (46715563)
+* Torres, Enzo Sebastián (45.097.401)
 ---
 
 ## 📝 Propuesta
