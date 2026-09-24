@@ -5,10 +5,10 @@
 **Cátedra:** Bases de Datos I  
 
 ## 👥 Equipo de Trabajo
-* Valentín Nicolas Luque (45845740)
-* Rodas Juan Martin (46363476)
-* Cabrera Luz (44976967)
-* Nicolas Javier Mancedo (46715563)
+* Luque, Valentin Nicolas (45845740)
+* Rodas, Juan Martin (46363476)
+* Cabrera, Luz Arianna (44976967)
+* Mancedo, Nicolas Javier (46715563)
 * Torres, Enzo Sebastián (45097401)
 
 ---
