@@ -54,7 +54,3 @@ Decidimos trabajar con un hotel de la ciudad de Corrientes que necesita actualiz
 20. **R20:** Los medios de pago pueden ser efectivo, tarjeta o transferencia.
 21. **R21:** Una reserva se considera pagada cuando se abona el total correspondiente.
 22. **R22:** Los empleados del hotel pueden registrar y gestionar las reservas.
-
-
-# Diagrama del Hotel
-https://erdplus.com/diagrams/613421
