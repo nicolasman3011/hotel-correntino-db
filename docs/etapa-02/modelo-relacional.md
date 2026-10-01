@@ -1,1 +1,1 @@
-
+[Esquema Relacional](DiagramaRelacional.jpeg)
