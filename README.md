@@ -5,11 +5,11 @@
 **Cátedra:** Bases de Datos I  
 
 ## 👥 Equipo de Trabajo
-* Luque, Valentin Nicolas (45845740)
-* Rodas, Juan Martin (46363476)
-* Cabrera, Luz Arianna (44976967)
-* Mancedo, Nicolas Javier (46715563)
-* Torres, Enzo Sebastián (45097401)
+* Cabrera, Luz Arianna (44.976.967)
+* Luque, Valentin Nicolas (45.845.740)
+* Mancedo, Nicolas Javier (46.715.563)
+* Rodas, Juan Martin (46.363.476)
+* Torres, Enzo Sebastián (45.097.401)
 
 ---
 
