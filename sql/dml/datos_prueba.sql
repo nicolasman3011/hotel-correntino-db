@@ -1,15 +1,15 @@
--- Datos de prueba para Localidad
-INSERT INTO Localidad (id_localidad, provincia) VALUES (1, 'Corrientes');
-INSERT INTO Localidad (id_localidad, provincia) VALUES (2, 'Chaco');
-INSERT INTO Localidad (id_localidad, provincia) VALUES (3, 'Misiones');
+-- Datos de prueba para Localidad (Turismo interno)
+INSERT INTO Localidad (id_localidad, provincia) VALUES (1, 'Corrientes Capital');
+INSERT INTO Localidad (id_localidad, provincia) VALUES (2, 'Paso de la Patria');
+INSERT INTO Localidad (id_localidad, provincia) VALUES (3, 'Goya');
 
 -- Datos de prueba para Habitacion
 INSERT INTO Habitacion (numero, categoria, precio, capacidad, estado_habitacion) VALUES (101, 'Estandar', 15000.00, 2, 'Disponible');
 INSERT INTO Habitacion (numero, categoria, precio, capacidad, estado_habitacion) VALUES (102, 'Suite', 35000.00, 2, 'Ocupada');
 
--- Datos de prueba para Persona
+-- Datos de prueba para Persona (Con caracteristicas de las ciudades)
 INSERT INTO Persona (id_persona, nombre, apellido, email, telefono, id_localidad) VALUES (10, 'Juan', 'Perez', 'jperez@email.com', '3794123456', 1);
-INSERT INTO Persona (id_persona, nombre, apellido, email, telefono, id_localidad) VALUES (11, 'Maria', 'Gonzalez', 'mgonzalez@email.com', '3624123456', 2);
+INSERT INTO Persona (id_persona, nombre, apellido, email, telefono, id_localidad) VALUES (11, 'Maria', 'Gonzalez', 'mgonzalez@email.com', '3777123456', 3);
 INSERT INTO Persona (id_persona, nombre, apellido, email, telefono, id_localidad) VALUES (20, 'Carlos', 'Rodriguez', 'crodriguez@hotel.com', '3794987654', 1);
 
 -- Datos de prueba para Huesped
