@@ -6,7 +6,8 @@
 
 **Universidad Nacional del Nordeste (UNNE)**<br>
 **Facultad de Ciencias Exactas y Naturales y Agrimensura (FaCENA)**<br>
-**Cátedra:** Bases de Datos I
+**Cátedra:** Bases de Datos I<br>
+**Grupo N°:** 23
 
 ## 👥 Equipo de Trabajo
 - Cabrera, Luz Arianna (44.976.967)
@@ -22,7 +23,7 @@
 - [Requerimientos del Sistema](#-requerimientos-del-sistema)
 - [Reglas de Negocio](#-reglas-de-negocio)
 - [Estructura del Repositorio](#-estructura-del-repositorio)
-- [Guía de Etapas y Documentación](#️-guía-de-etapas-y-documentación)
+- [Estado del Proyecto](#-estado-del-proyecto)
 
 ---
 
@@ -72,15 +73,25 @@ Decidimos trabajar con un hotel de la ciudad de Corrientes que necesita actualiz
 ---
 
 ## 📂 Estructura del Repositorio
-El proyecto sigue una arquitectura limpia, separando estrictamente la documentación teórica (`docs/`) de los scripts ejecutables (`sql/`).
+
+El proyecto sigue una organización profesional separando la documentación teórica de los scripts ejecutables:
 
 ```text
-proyecto-bd1-equipo-XX/
-├── docs/
-│   ├── etapa-01/
-│   ├── etapa-02/
-│   └── etapa-03/
-└── sql/
-    ├── ddl/          # Scripts de creación de tablas
-    ├── dml/          # Scripts de inserción de datos de prueba
-    └── consultas/    # Scripts de vistas y consultas SQL
+📦 hotel-correntino
+ ┣ 📂 docs
+ ┃ ┣ 📂 etapa-01 (Reglas de negocio)
+ ┃ ┣ 📂 etapa-02 
+ ┃ ┃ ┣ 📜 der.png (Modelo Conceptual)
+ ┃ ┃ ┗ 📜 relacional.png (Modelo Relacional)
+ ┃ ┗ 📂 etapa-04
+ ┃   ┗ 📜 consultas.md (Casos de uso DQL)
+ ┣ 📂 sql
+ ┃ ┣ 📂 ddl
+ ┃ ┃ ┗ 📜 crear_bd.sql (Creación de tablas y estructura)
+ ┃ ┣ 📂 dml
+ ┃ ┃ ┗ 📜 datos_prueba.sql (Poblado de datos iniciales)
+ ┃ ┗ 📂 consultas
+ ┃   ┣ 📜 comprobante_venta.sql
+ ┃   ┣ 📜 consulta_avanzada.sql
+ ┃   ┗ 📜 informe_ventas.sql
+ ┗ 📜 README.md
