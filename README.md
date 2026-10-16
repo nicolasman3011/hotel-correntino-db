@@ -94,8 +94,8 @@ El proyecto sigue una organización profesional separando la documentación teó
  ┃   ┣ 📜 comprobante_venta.sql
  ┃   ┣ 📜 consulta_avanzada.sql
  ┃   ┗ 📜 informe_ventas.sql
- ┗ 📜 README.md
-'''
+ ┗ 📜 README.md ```
+
 
 ## ✅ Estado del Proyecto
 - ✅ **Etapa 1:** Relevamiento y Reglas de Negocio.
