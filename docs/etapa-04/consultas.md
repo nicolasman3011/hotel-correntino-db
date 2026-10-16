@@ -13,3 +13,15 @@ En esta etapa se desarrollaron sentencias DQL (Data Query Language) utilizando `
 ### Caso de Uso 3: Consulta Avanzada (Ocupación)
 * **Objetivo:** Mostrar qué categorías de habitaciones son las más solicitadas por los clientes.
 * **Script:** `sql/consultas/consulta_avanzada.sql`
+
+### Caso de Uso 4:reserva de un huesped
+* **Objetivo:** Mostrar la reserva por el id de un huesped.
+* **Script:** `sql/consultas/reserva_por_huesped.sql`
+
+### Caso de Uso 5:comprobacion de estado de habitcaciones
+* **Objetivo:** Mostrar todas las habitaciones en estado desocupado.
+* **Script:** `sql/consultas/habitaciones_disponibles.sql`
+
+* ### Caso de Uso 6:habitcaciones ocupadas
+* **Objetivo:** Mostrar todas las habitaciones las cuales estan ocupadas.
+* **Script:** `sql/consultas/habitaciones_hoy.sql`
