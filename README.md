@@ -95,3 +95,10 @@ El proyecto sigue una organización profesional separando la documentación teó
  ┃   ┣ 📜 consulta_avanzada.sql
  ┃   ┗ 📜 informe_ventas.sql
  ┗ 📜 README.md
+'''
+
+## ✅ Estado del Proyecto
+- ✅ **Etapa 1:** Relevamiento y Reglas de Negocio.
+- ✅ **Etapa 2:** Modelo Conceptual (DER) y Modelo Relacional.
+- ✅ **Etapa 3:** Implementación Física (DDL y DML).
+- ✅ **Etapa 4:** Consultas y Extracción de Datos (DQL).
