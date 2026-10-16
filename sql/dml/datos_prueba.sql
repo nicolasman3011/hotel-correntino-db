@@ -1,29 +1,52 @@
--- Datos de prueba para Localidad (Turismo interno)
-INSERT INTO Localidad (id_localidad, provincia) VALUES (1, 'Corrientes Capital');
-INSERT INTO Localidad (id_localidad, provincia) VALUES (2, 'Paso de la Patria');
-INSERT INTO Localidad (id_localidad, provincia) VALUES (3, 'Goya');
+-- ==========================================================
+-- SCRIPT DE POBLADO DE DATOS (DML) - HOTEL CORRENTINO
+-- ==========================================================
 
--- Datos de prueba para Habitacion
-INSERT INTO Habitacion (numero, categoria, precio, capacidad, estado_habitacion) VALUES (101, 'Estandar', 15000.00, 2, 'Disponible');
-INSERT INTO Habitacion (numero, categoria, precio, capacidad, estado_habitacion) VALUES (102, 'Suite', 35000.00, 2, 'Ocupada');
+-- LOCALIDAD (Ciudades del interior de Corrientes)
+INSERT INTO Localidad (id_localidad, provincia) VALUES
+(1, 'Corrientes Capital'),
+(2, 'Goya'),
+(3, 'Paso de los Libres');
 
--- Datos de prueba para Persona (Con caracteristicas de las ciudades)
-INSERT INTO Persona (id_persona, nombre, apellido, email, telefono, id_localidad) VALUES (10, 'Juan', 'Perez', 'jperez@email.com', '3794123456', 1);
-INSERT INTO Persona (id_persona, nombre, apellido, email, telefono, id_localidad) VALUES (11, 'Maria', 'Gonzalez', 'mgonzalez@email.com', '3777123456', 3);
-INSERT INTO Persona (id_persona, nombre, apellido, email, telefono, id_localidad) VALUES (20, 'Carlos', 'Rodriguez', 'crodriguez@hotel.com', '3794987654', 1);
+-- PERSONA (Incluye DNI para cumplir Regla 1 y localidades reales)
+INSERT INTO Persona (id_persona, dni, nombre, apellido, email, telefono, id_localidad) VALUES
+(1, '35123456', 'Juan', 'Perez', 'jperez@gmail.com', '3794112233', 1), -- Huésped (Capital)
+(2, '38987654', 'Maria', 'Gomez', 'mgomez@gmail.com', '3777998877', 2), -- Huésped (Goya)
+(3, '40111222', 'Carlos', 'Lopez', 'clopez@gmail.com', '3772554433', 3), -- Huésped (Paso de los Libres)
+(4, '32444555', 'Ana', 'Martinez', 'amartinez@hotel.com', '3794667788', 1), -- Empleada (Capital)
+(5, '29888999', 'Diego', 'Romero', 'dromero@hotel.com', '3794223344', 1); -- Empleado (Capital)
 
--- Datos de prueba para Huesped
-INSERT INTO Huesped (id_huesped, nacionalidad) VALUES (10, 'Argentina');
-INSERT INTO Huesped (id_huesped, nacionalidad) VALUES (11, 'Argentina');
+-- HUESPED
+INSERT INTO Huesped (id_huesped, nacionalidad) VALUES
+(1, 'Argentina'),
+(2, 'Argentina'),
+(3, 'Argentina');
 
--- Datos de prueba para Empleado
-INSERT INTO Empleado (id_empleado, cargo, sueldo) VALUES (20, 'Recepcionista', 450000.00);
+-- EMPLEADO
+INSERT INTO Empleado (id_empleado, cargo, sueldo) VALUES
+(4, 'Recepcionista', 450000.00),
+(5, 'Gerente', 750000.00);
 
--- Datos de prueba para Reserva
-INSERT INTO Reserva (id_reserva, estado_reserva, id_empleado, id_huesped) VALUES (1001, 'Confirmada', 20, 10);
+-- HABITACION (Respeta Regla 6: disponible, ocupada, reservada, mantenimiento)
+INSERT INTO Habitacion (numero, categoria, precio, capacidad, estado_habitacion) VALUES
+(101, 'Simple', 15000.00, 1, 'disponible'),
+(102, 'Doble', 25000.00, 2, 'ocupada'),
+(103, 'Suite', 45000.00, 4, 'reservada'),
+(104, 'Doble', 25000.00, 2, 'mantenimiento');
 
--- Datos de prueba para Pago
-INSERT INTO Pago (id_pago, forma_de_pago, estado_pago, importe_total, id_reserva) VALUES (5001, 'Efectivo', 'Pagado', 15000.00, 1001);
+-- RESERVA (Respeta Regla 12, 13, 14 y 15 con fechas y estados permitidos)
+INSERT INTO Reserva (id_reserva, estado_reserva, fecha_hora_checkin, fecha_hora_checkout, id_empleado, id_huesped) VALUES
+(1, 'finalizada', '2023-10-01 14:00:00', '2023-10-05 10:00:00', 4, 1),
+(2, 'confirmada', NULL, NULL, 4, 2), -- Aún no hizo check-in
+(3, 'cancelada', NULL, NULL, 5, 3);
 
--- Datos de prueba para Detalle_Reserva
-INSERT INTO Detalle_Reserva (id_reserva, numero, fecha_ingreso, fecha_egreso, cantidad_habitaciones) VALUES (1001, 101, '2026-10-15', '2026-10-17', 1);
+-- DETALLE_RESERVA (Respeta Regla 10: egreso mayor a ingreso)
+INSERT INTO Detalle_Reserva (id_reserva, numero, fecha_ingreso, fecha_egreso, cantidad_habitaciones) VALUES
+(1, 102, '2023-10-01', '2023-10-05', 1),
+(2, 103, '2023-10-20', '2023-10-25', 1),
+(3, 101, '2023-11-01', '2023-11-03', 1);
+
+-- PAGO (Respeta Regla 17, 18 y 20: importes positivos, medios de pago válidos)
+INSERT INTO Pago (id_pago, fecha_pago, forma_de_pago, estado_pago, importe_total, id_reserva) VALUES
+(1, '2023-10-01', 'tarjeta', 'Aprobado', 100000.00, 1),
+(2, '2023-10-15', 'transferencia', 'Pendiente', 125000.00, 2);
