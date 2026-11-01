@@ -1,4 +1,4 @@
-CREATE TRIGGER actualizacion_precios(
+CREATE TRIGGER actualizacion_precios
 ON Habitacion
 AFTER UPDATE 
 AS 
@@ -17,4 +17,4 @@ FROM deleted d
 INNER JOIN inserted i ON d.numero = i.numero;
 	END
 END
-);
+
