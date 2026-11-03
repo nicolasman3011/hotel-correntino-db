@@ -3,17 +3,18 @@ ON Habitacion
 AFTER UPDATE 
 AS 
 BEGIN 
-	SET NOCOUNT ON;
-IF UPDATE(precio)
-BEGIN
-	INSERT INTO precio_habitacion(num_habitacion, precio_anterior, precio_actualizado, actualizacion, empleado)
-	SELECT 
-	d.numero,
-	d.precio AS precio_anterior,
-	i.precio AS precio_actualizado,
-	'UPDATE',
-	SYSTEM_USER
-FROM deleted d
-INNER JOIN inserted i ON d.numero = i.numero;
-	END
+    SET NOCOUNT ON;
+    IF UPDATE(precio)
+    BEGIN
+        INSERT INTO precio_habitacion(num_habitacion, precio_anterior, precio_actualizado, actualizacion, empleado)
+        SELECT 
+            d.numero, 
+		d.precio, 
+		i.precio, 
+		'UPDATE', 
+		SYSTEM_USER
+        FROM deleted d
+        INNER JOIN inserted i ON d.numero = i.numero;
+    END
 END;
+GO
