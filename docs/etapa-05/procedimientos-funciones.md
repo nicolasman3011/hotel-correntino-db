@@ -1,93 +1,27 @@
--- 1. FUNCIONES DEFINIDAS POR EL USUARIO
+# Etapa 5: Procedimientos y Funciones Almacenadas
 
-DROP FUNCTION IF EXISTS dbo.CalcularCostoEstadia;
-GO
+En esta etapa se implementaron mecanismos avanzados en el motor de base de datos para encapsular la lógica del negocio, garantizando que el sistema del Hotel Correntino sea más robusto, seguro y fácil de mantener a largo plazo. 
 
-CREATE FUNCTION dbo.CalcularCostoEstadia 
-(
-    @FechaIngreso DATE, 
-    @FechaEgreso DATE, 
-    @PrecioNoche DECIMAL(10,2),
-    @PorcentajeDescuento DECIMAL(5,2)
-)
-RETURNS DECIMAL(10,2)
-AS
-BEGIN
-    DECLARE @Dias INT = DATEDIFF(DAY, @FechaIngreso, @FechaEgreso);
-    IF @Dias = 0 SET @Dias = 1; 
+Siguiendo la estructura del proyecto, se detallan a continuación los componentes desarrollados para automatizar operaciones repetitivas y cálculos centrales.
 
-    DECLARE @CostoBruto DECIMAL(10,2) = @Dias * @PrecioNoche;
-    DECLARE @Descuento DECIMAL(10,2) = @CostoBruto * (@PorcentajeDescuento / 100.0);
-    
-    RETURN @CostoBruto - @Descuento;
-END;
-GO
+### Tema Técnico 1: Función Definida por el Usuario
+**Mecanismo:** `CalcularCostoEstadia`
+*   **Para qué se utiliza:** Calcula de forma automática el costo total de una estadía. Recibe como parámetros las fechas de ingreso y egreso, el precio por noche de la habitación y un porcentaje de descuento, retornando el monto neto a cobrar.
+*   **Por qué fue elegido:** Se implementó para favorecer la modularidad. Al encapsular la lógica matemática de las tarifas en una función reutilizable, si en el futuro cambian las reglas comerciales (ej. nuevos impuestos o fórmulas de descuento), solo se modifica este fragmento de código sin alterar los demás procesos del sistema.
+*   **Cómo se integra al sistema:** Se puede invocar tanto desde consultas `SELECT` para simulaciones de precios, como desde procedimientos almacenados al momento de registrar facturas o pagos.
+*   **Cómo se demuestra su funcionamiento:** Ejecutando una consulta escalar que le pase fechas y precios de prueba, verificando que el retorno matemático aplique correctamente los días contabilizados y el descuento.
+*   **Script:** `sql/tecnico/funciones/calcular_costo_estadia.sql`
 
--- 2. PROCEDIMIENTOS ALMACENADOS
+### Tema Técnico 2: Procedimiento Almacenado
+**Mecanismo:** `RegistrarReservaHotel`
+*   **Para qué se utiliza:** Gestiona el ciclo completo de alta de una reserva. Valida la disponibilidad, inserta el encabezado en la tabla `Reserva`, inserta las fechas en `Detalle_Reserva` y actualiza el estado de la `Habitacion` a "reservada".
+*   **Por qué fue elegido:** Se eligió para garantizar el rendimiento, la seguridad y la consistencia de los datos. Al ser un conjunto de instrucciones precompiladas, evita que un usuario o aplicación externa modifique las tablas de forma directa o deje una reserva a medias (por ejemplo, insertando la cabecera pero olvidando actualizar el estado de la habitación). Además, concentra validaciones críticas mediante bloqueos lógicos (`THROW`) para evitar el *overbooking* (solapamiento de fechas).
+*   **Cómo se integra al sistema:** Actúa como la operación transaccional principal que consumirá la interfaz del recepcionista cada vez que ingrese un nuevo cliente al hotel.
+*   **Cómo se demuestra su funcionamiento:** Mediante dos pruebas de ejecución (`EXEC`). Un caso exitoso con fechas disponibles (verificando la inserción en las 3 tablas involucradas) y un caso fallido intentando registrar un cliente en fechas que se solapan con una reserva existente, esperando que el motor aborte la operación y devuelva el mensaje de error programado.
+*   **Script:** `sql/tecnico/procedimientos/registrar_reserva_hotel.sql`
+* **Objetivo:** Mostrar todas las habitaciones en estado desocupado.
+* **Script:** `sql/consultas/habitaciones_disponibles.sql`
 
-DROP PROCEDURE IF EXISTS dbo.RegistrarReservaHotel;
-GO
-
-CREATE PROCEDURE dbo.RegistrarReservaHotel
-    @id_reserva INT,
-    @id_empleado INT,
-    @id_huesped INT,
-    @numero_habitacion INT,
-    @fecha_ingreso DATE,
-    @fecha_egreso DATE
-AS
-BEGIN
-    IF @fecha_egreso <= @fecha_ingreso
-    BEGIN
-        THROW 50001, 'Error: La fecha de egreso debe ser posterior a la fecha de ingreso.', 1;
-    END
-
-    IF EXISTS (
-        SELECT 1 FROM Detalle_Reserva
-        WHERE numero = @numero_habitacion
-          AND (fecha_ingreso < @fecha_egreso AND fecha_egreso > @fecha_ingreso)
-    )
-    BEGIN
-        THROW 50002, 'Error: La habitación seleccionada ya se encuentra reservada o ocupada en esas fechas.', 1;
-    END
-
-    -- Insertar en la tabla cabecera (Reserva)
-    INSERT INTO Reserva (id_reserva, estado_reserva, fecha_hora_checkin, fecha_hora_checkout, id_empleado, id_huesped)
-    VALUES (@id_reserva, 'confirmada', NULL, NULL, @id_empleado, @id_huesped);
-
-    -- Insertar en la tabla detalle (Detalle_Reserva)
-    INSERT INTO Detalle_Reserva (id_reserva, numero, fecha_ingreso, fecha_egreso, cantidad_habitaciones)
-    VALUES (@id_reserva, @numero_habitacion, @fecha_ingreso, @fecha_egreso, 1);
-
-    -- Actualizar el estado de la habitación
-    UPDATE Habitacion
-    SET estado_habitacion = 'reservada'
-    WHERE numero = @numero_habitacion;
-    
-    PRINT 'Reserva registrada con éxito.';
-END;
-GO
-
--- 3. CODIGO PARA EVIDENCIAS
-
-SELECT dbo.CalcularCostoEstadia('2023-12-01', '2023-12-06', 15000.00, 10.00) AS CostoTotalConDescuento;
-
-EXEC dbo.RegistrarReservaHotel 
-    @id_reserva = 4, 
-    @id_empleado = 4, 
-    @id_huesped = 1, 
-    @numero_habitacion = 101, 
-    @fecha_ingreso = '2023-12-01', 
-    @fecha_egreso = '2023-12-10';
-
-SELECT * FROM Reserva WHERE id_reserva = 4;
-SELECT * FROM Detalle_Reserva WHERE id_reserva = 4;
-SELECT * FROM Habitacion WHERE numero = 101; -- Debería decir 'reservada'
-
-EXEC dbo.RegistrarReservaHotel 
-    @id_reserva = 5, 
-    @id_empleado = 5, 
-    @id_huesped = 2, 
-    @numero_habitacion = 101, 
-    @fecha_ingreso = '2023-12-05', 
-    @fecha_egreso = '2023-12-15';
+* ### Caso de Uso 6:habitcaciones ocupadas
+* **Objetivo:** Mostrar todas las habitaciones las cuales estan ocupadas.
+* **Script:** `sql/consultas/habitaciones_hoy.sql`
