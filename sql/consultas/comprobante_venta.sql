@@ -12,4 +12,4 @@ JOIN Persona p ON h.id_huesped = p.id_persona
 JOIN Detalle_Reserva dr ON r.id_reserva = dr.id_reserva
 JOIN Habitacion hab ON dr.numero = hab.numero
 JOIN Pago pag ON r.id_reserva = pag.id_reserva
-WHERE r.id_reserva = 1001;
+WHERE r.id_reserva = 1;
