@@ -1,10 +1,13 @@
+-- Elimina el trigger si ya existe antes de volver a crearlo
+DROP TRIGGER IF EXISTS actualizacion_precios;
+GO
+
 CREATE TRIGGER actualizacion_precios
 ON Habitacion
 AFTER UPDATE 
 AS 
 BEGIN 
     SET NOCOUNT ON;
-    
     IF UPDATE(precio)
     BEGIN
         INSERT INTO precio_habitacion(num_habitacion, precio_anterior, precio_actualizado, actualizacion, empleado)
