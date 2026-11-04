@@ -136,27 +136,56 @@ El proyecto sigue una organización profesional separando la documentación teó
 ```text
 📦 hotel-correntino
  ┣ 📂 docs
- ┃ ┣ 📂 etapa-01 (Reglas de negocio)
- ┃ ┣ 📂 etapa-02 
- ┃ ┃ ┣ 📜 der.png (Modelo Conceptual)
- ┃ ┃ ┗ 📜 relacional.png (Modelo Relacional)
+ ┃ ┣ 📂 etapa-01
+ ┃ ┃ ┣ 📜 alcance.md
+ ┃ ┃ ┣ 📜 decisiones-diseno.md
+ ┃ ┃ ┣ 📜 descripcion-caso.md
+ ┃ ┃ ┗ 📜 reglas-negocio.md
+ ┃ ┣ 📂 etapa-02
+ ┃ ┃ ┣ 📂 der
+ ┃ ┃ ┣ 📜 decisiones-diseno.md
+ ┃ ┃ ┣ 📜 modelo-relacional.md
+ ┃ ┃ ┣ 📜 normalizacion.md
+ ┃ ┃ ┗ 📜 relacional-hotel.png
+ ┃ ┣ 📂 etapa-03
+ ┃ ┃ ┣ 📜 implementacion.md
+ ┃ ┃ ┣ 📜 pruebas-validacion.md
+ ┃ ┃ ┗ 📜 restricciones-integridad.md
  ┃ ┣ 📂 etapa-04
- ┃ ┃  ┗ 📜 consultas.md (Casos de uso DQL)
+ ┃ ┃ ┗ 📜 consultas.md
  ┃ ┗ 📂 etapa-05
+ ┃   ┣ 📜 indices-optimizacion.md
  ┃   ┣ 📜 procedimientos-funciones.md
- ┃   ┣ 📜 transacciones.md
- ┃   ┣ 📜 triggers-auditoria.md
  ┃   ┣ 📜 seguridad.md
- ┃   ┗ 📜 indices-optimizacion.md
+ ┃   ┣ 📜 transacciones.md
+ ┃   ┗ 📜 trigger_auditoria.md
  ┣ 📂 sql
+ ┃ ┣ 📂 consultas
+ ┃ ┃ ┣ 📜 comprobante_venta.sql
+ ┃ ┃ ┣ 📜 consulta_avanzada.sql
+ ┃ ┃ ┣ 📜 habitaciones hoy.sql
+ ┃ ┃ ┣ 📜 habitaciones_disponibles.sql
+ ┃ ┃ ┣ 📜 informe_ventas.sql
+ ┃ ┃ ┗ 📜 reserva_por_huesped.sql
  ┃ ┣ 📂 ddl
- ┃ ┃ ┗ 📜 crear_bd.sql (Creación de tablas y estructura)
+ ┃ ┃ ┗ 📜 crear_bd.sql
  ┃ ┣ 📂 dml
- ┃ ┃ ┗ 📜 datos_prueba.sql (Poblado de datos iniciales)
- ┃ ┗ 📂 consultas
- ┃   ┣ 📜 comprobante_venta.sql
- ┃   ┣ 📜 consulta_avanzada.sql
- ┃   ┗ 📜 informe_ventas.sql
+ ┃ ┃ ┗ 📜 datos_prueba.sql
+ ┃ ┗ 📂 tecnico
+ ┃   ┣ 📂 funciones
+ ┃   ┃ ┗ 📜 funciones.sql
+ ┃   ┣ 📂 indices
+ ┃   ┃ ┗ 📜 optimizacion.sql
+ ┃   ┣ 📂 procedimientos
+ ┃   ┃ ┗ 📜 procedimientos.sql
+ ┃   ┣ 📂 seguridad
+ ┃   ┃ ┗ 📜 seguridad.sql
+ ┃   ┣ 📂 transacciones
+ ┃   ┃ ┗ 📜 transaccion.sql
+ ┃   ┗ 📂 triggers
+ ┃     ┣ 📜 AuditoriaTrigger.sql
+ ┃     ┣ 📜 EjecucionTrigger.sql
+ ┃     ┗ 📜 Trigger.sql
  ┗ 📜 README.md
 ```
 
