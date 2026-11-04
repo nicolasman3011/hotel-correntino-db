@@ -12,6 +12,6 @@ JOIN Reserva r ON dr.id_reserva = r.id_reserva
 JOIN Huesped hu ON r.id_huesped = hu.id_huesped
 JOIN Persona p ON hu.id_huesped = p.id_persona
 WHERE r.estado_reserva = 'confirmada'
-  AND dr.fecha_ingreso <= CURRENT_DATE
-  AND dr.fecha_egreso > CURRENT_DATE
+  AND dr.fecha_ingreso <= GETDATE()
+  AND dr.fecha_egreso > GETDATE()
   AND dr.fecha_hora_checkout IS NULL;
