@@ -1,5 +1,5 @@
 -- =======================================================================
--- 2. PROCEDIMIENTOS ALMACENADOS
+-- PROCEDIMIENTOS ALMACENADOS - HOTEL CORRENTINO
 -- =======================================================================
 
 DROP PROCEDURE IF EXISTS dbo.RegistrarReservaHotel;
@@ -14,6 +14,8 @@ CREATE PROCEDURE dbo.RegistrarReservaHotel
     @fecha_egreso DATE
 AS
 BEGIN
+    -- [MODIFICACIÓN]: Se mantienen las validaciones de negocio básicas por separado, 
+    -- dejando la lógica de control transaccional robusta (ACID) para el módulo de transacciones.
     IF @fecha_egreso <= @fecha_ingreso
     BEGIN
         THROW 50001, 'Error: La fecha de egreso debe ser posterior a la fecha de ingreso.', 1;
@@ -25,7 +27,7 @@ BEGIN
           AND (fecha_ingreso < @fecha_egreso AND fecha_egreso > @fecha_ingreso)
     )
     BEGIN
-        THROW 50002, 'Error: La habitación seleccionada ya se encuentra reservada o ocupada en esas fechas.', 1;
+        THROW 50002, 'Error: La habitación seleccionada ya se encuentra reservada u ocupada en esas fechas.', 1;
     END
 
     INSERT INTO Reserva (id_reserva, estado_reserva, fecha_hora_checkin, fecha_hora_checkout, id_empleado, id_huesped)
@@ -41,7 +43,6 @@ BEGIN
     PRINT 'Reserva registrada con éxito.';
 END;
 GO
-
 -- PRUEBA DEL PROCEDIMIENTO - Caso exitoso
 EXEC dbo.RegistrarReservaHotel 
     @id_reserva = 4, 
