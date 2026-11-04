@@ -25,46 +25,4 @@ Ambas tablas se relacionan mediante un INNER JOIN utilizando la clave primaria d
 Las tarifas de las habitaciones pueden sufrir ajustes a lo largo del tiempo. Para prevenir inconsistencias, el sistema debe registrar en la tabla precio_habitacion cada actualización efectuada sobre la columna precio de la tabla Habitación.
 
 **5_Script de Demostración y Resultados Obtenidos**
-
----Creación de la tabla que será modificada---
-CREATE TABLE precio_habitacion(
-    id_auditoria INT IDENTITY(1,1) PRIMARY KEY,
-    num_habitacion INT NOT NULL,
-    precio_anterior DECIMAL(10,2),
-    precio_actualizado DECIMAL(10,2),
-    actualizacion VARCHAR(50),
-    empleado VARCHAR(50),
-    fecha_modifiacion DATETIME DEFAULT GETDATE()
-);
-GO
-
-
----Implementación de Trigger de Auditoria---
-CREATE TRIGGER actualizacion_precios
-ON Habitacion
-AFTER UPDATE 
-AS 
-BEGIN 
-    SET NOCOUNT ON;
-    IF UPDATE(precio)
-    BEGIN
-        INSERT INTO precio_habitacion(num_habitacion, precio_anterior, precio_actualizado, actualizacion, empleado)
-        SELECT 
-            d.numero, 
-		d.precio, 
-		i.precio, 
-		'UPDATE', 
-		SYSTEM_USER
-        FROM deleted d
-        INNER JOIN inserted i ON d.numero = i.numero;
-    END
-END;
-GO
-
----Caso de prueba---
-UPDATE Habitacion
-SET    precio = 50000
-WHERE  numero = 101;
-SELECT *
-FROM   precio_habitacion;
-GO
+(https://github.com/nicolasman3011/hotel-correntino-db/tree/main/sql/tecnico/triggers)
