@@ -83,8 +83,14 @@ El proyecto sigue una organización profesional separando la documentación teó
  ┃ ┣ 📂 etapa-02 
  ┃ ┃ ┣ 📜 der.png (Modelo Conceptual)
  ┃ ┃ ┗ 📜 relacional.png (Modelo Relacional)
- ┃ ┗ 📂 etapa-04
- ┃   ┗ 📜 consultas.md (Casos de uso DQL)
+ ┃ ┣ 📂 etapa-04
+ ┃ ┃  ┗ 📜 consultas.md (Casos de uso DQL)
+ ┃ ┗ 📂 etapa-05
+ ┃   ┣ 📜 procedimientos-funciones.md
+ ┃   ┣ 📜 transacciones.md
+ ┃   ┣ 📜 triggers-auditoria.md
+ ┃   ┣ 📜 seguridad.md
+ ┃   ┗ 📜 indices-optimizacion.md
  ┣ 📂 sql
  ┃ ┣ 📂 ddl
  ┃ ┃ ┗ 📜 crear_bd.sql (Creación de tablas y estructura)
@@ -98,8 +104,9 @@ El proyecto sigue una organización profesional separando la documentación teó
 ```
 
 
-## ✅ Estado del Proyecto
+##✅ Estado del Proyecto
 - ✅ **Etapa 1:** Relevamiento y Reglas de Negocio.
 - ✅ **Etapa 2:** Modelo Conceptual (DER) y Modelo Relacional.
 - ✅ **Etapa 3:** Implementación Física (DDL y DML).
 - ✅ **Etapa 4:** Consultas y Extracción de Datos (DQL).
+- ✅ **Etapa 5:** Programación en Base de Datos (Procedimientos, Funciones, Transacciones, Triggers, Seguridad e Índices).
